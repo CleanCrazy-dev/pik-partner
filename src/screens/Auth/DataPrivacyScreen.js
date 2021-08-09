@@ -1,0 +1,54 @@
+import React from 'react';
+import {
+    StyleSheet,
+    Text,
+} from 'react-native';
+import WebView from 'react-native-webview'
+import HeaderPage from '../../components/HeaderPage';
+import {
+    COLOR_NEUTRAL_GRAY,
+    COLOR_PRIMARY_900,
+} from '../../utils/constants';
+import {API_BASE_URL} from '@env';
+import PageContainerDark from '../../components/PageContainerDark';
+import KeyboardAvoidingScreen from '../../components/KeyboardAvoidingScreen';
+
+const DataPrivacyScreen = ({navigation}) => {
+    return (
+        <KeyboardAvoidingScreen>
+            <PageContainerDark
+                Header={<HeaderPage
+                    title={'Data Privacy'}
+                    color={HeaderPage.Colors.BLACK}
+                />}
+                noScroll
+                contentStyle={{
+                    flex: 1,
+                }}
+            >
+                <WebView
+                    source={{uri: `${API_BASE_URL}/page/Privacy%20Policy`}}
+                    style={[StyleSheet.absoluteFill]}
+                />
+            </PageContainerDark>
+        </KeyboardAvoidingScreen>
+    );
+};
+
+const styles = StyleSheet.create({
+    h1: {
+        fontWeight: '700',
+        fontSize: 12,
+        lineHeight: 16,
+        marginTop: 16,
+        color: COLOR_NEUTRAL_GRAY,
+    },
+    description: {
+        fontWeight: '400',
+        fontSize: 16,
+        lineHeight: 24,
+        color: COLOR_PRIMARY_900,
+    },
+});
+
+export default DataPrivacyScreen;
